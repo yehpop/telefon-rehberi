@@ -1,0 +1,1 @@
+jsonFilePath = "telefon_rehberi/res/telefonlar.json"
