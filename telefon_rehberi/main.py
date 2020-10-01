@@ -29,6 +29,10 @@ class MainMenu:
     def __redirect_input(self, inp: int):
         print(self.menuNames[inp])
 
+        if self.menuNames[inp] == "Kayıt Ekle":
+            addNewPhoneMenu = AddNewPhoneMenu()
+            return addNewPhoneMenu.start()
+
     def start(self):
         self.__print_menu()
 
@@ -36,8 +40,8 @@ class MainMenu:
         while not (inp.isdigit() and 0 < int(inp) <= len(self.menuNames)):
             inp = input("GIRMEK ISTEDIGIN MENUYU GIR LAN: ")
 
-        self.__redirect_input(int(inp) - 1)
-        return True
+        return self.__redirect_input(int(inp) - 1)
+        # return True
 
 
 class AddNewPhoneMenu(MainMenu):
