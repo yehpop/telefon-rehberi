@@ -1,10 +1,8 @@
 import telefon_rehberi.res.global_variables as gvars
 import json
-from telefon_rehberi.lib.classes import MainMenu, EditPhoneMenu, AddNewPhoneMenu
-# from telefon_rehberi.lib.classMainMenu import MainMenu
-# from telefon_rehberi.lib.classEditPhoneMenu import EditPhoneMenu
-# from telefon_rehberi.lib.classAddNewPhoneMenu import AddNewPhoneMenu
-# classes.funcReturnClasses()
+from telefon_rehberi.lib.classMainMenu import MainMenu
+from telefon_rehberi.lib.classEditPhoneMenu import EditPhoneMenu
+from telefon_rehberi.lib.classAddNewPhoneMenu import AddNewPhoneMenu
 
 
 def read_phones(path=gvars.jsonFilePath):
@@ -13,13 +11,7 @@ def read_phones(path=gvars.jsonFilePath):
     return read
 
 
-def write_phones(obj, path=gvars.jsonFilePath):
-    try:
-        with open(path, "w+") as file:
-            json.dump(obj, file)
-    except:
-        return False
-    return True
+isim, soyisim, telNo, evNo, email = "", "", 0, 0, ""
 
 
 def main():
@@ -36,6 +28,8 @@ def main():
         "Ev No: ": evNo,
         "Email: ": email
     }
+    mainMenu = MainMenu(mainMenuNames)
+
     isRunning = True
     while isRunning:
         isRunning = mainMenu.start()
