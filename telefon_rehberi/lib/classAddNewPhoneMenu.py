@@ -17,15 +17,16 @@ class AddNewPhoneMenu(MainMenu):
     def addPhone(self, obj):
         self.write_phones(obj)
 
-    def __print_menu(self):
+    def print_menu(self):
         maxLenA = 0
         for menu in self.addPhoneMenuInputs:
-            if len(menu > maxLenA):
-                maxlenA = menu
-        offset = maxLenA / 2 - len("Telefon Kaydı Ekleme Menüsü: ") / 2
+            if len(menu) > maxLenA:
+                maxLenA = len(menu)
+        offset = maxLenA / 2 - len("Telefon Kaydı Ekleme Menüsü") / 2
+        print(" " * offset, "Telefon Kaydı Ekleme Menüsü", " " * offset)
 
     def start(self):
-        self.__print_menu()
+        self.print_menu()
 
 
 def write_phones(obj, path=gvars.jsonFilePath):
