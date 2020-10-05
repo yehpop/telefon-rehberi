@@ -1,11 +1,31 @@
 import json
 import telefon_rehberi.res.global_variables as gvars
 from telefon_rehberi.lib.classMainMenu import MainMenu
+isim, soyisim, telNo, evNo, email = "", "", 0, 0, ""
 
 
 class AddNewPhoneMenu(MainMenu):
-    def addPhone(self):
-        pass
+    def __init__(self):
+        self.addPhoneMenuInputs = {
+            "İsim: ": isim,
+            "Soyisim: ": soyisim,
+            "Tel No: ": telNo,
+            "Ev No: ": evNo,
+            "Email: ": email
+        }
+
+    def addPhone(self, obj):
+        self.write_phones(obj)
+
+    def __print_menu(self):
+        maxLenA = 0
+        for menu in self.addPhoneMenuInputs:
+            if len(menu > maxLenA):
+                maxlenA = menu
+        offset = maxLenA / 2 - len("Telefon Kaydı Ekleme Menüsü: ") / 2
+
+    def start(self):
+        self.__print_menu()
 
 
 def write_phones(obj, path=gvars.jsonFilePath):

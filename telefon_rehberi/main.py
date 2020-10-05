@@ -20,7 +20,6 @@ def main():
         "Ad veya Soyada Göre Bilgileri Getir", "Telefona Göre Bilgileri Getir",
         "Çıkış"
     ]
-
     addPhoneMenuInputs = {
         "İsim: ": isim,
         "Soyisim: ": soyisim,
