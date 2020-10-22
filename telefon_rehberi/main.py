@@ -3,14 +3,6 @@ import json
 from telefon_rehberi.lib.classMainMenu import MainMenu
 from telefon_rehberi.lib.classEditPhoneMenu import EditPhoneMenu
 from telefon_rehberi.lib.classAddNewPhoneMenu import AddNewPhoneMenu
-
-
-def read_phones(path=gvars.jsonFilePath):
-    with open(path) as file:
-        read = json.load(file)
-    return read
-
-
 isim, soyisim, telNo, evNo, email = "", "", 0, 0, ""
 
 
@@ -20,7 +12,7 @@ def main():
         "Ad veya Soyada Göre Bilgileri Getir", "Telefona Göre Bilgileri Getir",
         "Çıkış"
     ]
-    addPhoneMenuInputs = {
+    dumpFile = {
         "İsim: ": isim,
         "Soyisim: ": soyisim,
         "Tel No: ": telNo,
@@ -32,6 +24,12 @@ def main():
     isRunning = True
     while isRunning:
         isRunning = mainMenu.start()
+        if isRunning == 1:
+            addNewPhoneMenu = AddNewPhoneMenu()
+            addNewPhoneMenu.start()
+        elif isRunning == 7:
+            print("Çıkış yapılıyor...")
+            isRunning = False
 
 
 if __name__ == "__main__":
