@@ -1,10 +1,25 @@
 import json
 import telefon_rehberi.res.global_variables as gvars
-from telefon_rehberi.lib.classMainMenu import MainMenu, telefonlar
+
+# kardeşim ne yaptın
+# from telefon_rehberi.lib.classMainMenu import MainMenu, telefonlar
+
+# burayı da sil biraz gereksiz olmuş
 isim, soyisim, telNo, evNo, email = "", "", 0, 0, ""
+# ya da kalsın boşver
 
+# Olmadı bu
+# class AddNewPhoneMenu(MainMenu):
+# inheritance için main menuyu değil basemenu tarzında bir şey kullan eğer yapacaksan
 
-class AddNewPhoneMenu(MainMenu):
+#   şimdi MainMenuden inheritlemeye çalıştığımızda hata 
+# alıyoruz çünkü MainMenu'nün bu classlara erişebilmesi gerekiyor 
+# __redirect filan hani
+
+# Ayrıca kodunu biraz daha açıklamaya çalış
+
+# eğer o işlere girersen interface ve metaclasslara da bak
+class AddNewPhoneMenu:
     def __init__(self):
         self.addPhoneMenuInputs = [
             "İsim: ", "Soyisim: ", "Tel No: ", "Ev No: ", "Email: "
@@ -41,24 +56,22 @@ class AddNewPhoneMenu(MainMenu):
 
     def start(self):
         self.print_menu()
+
         inpList = []
         for i in range(len(self.addPhoneMenuInputs)):
             inp = input(self.addPhoneMenuInputs[i])
             inpList.append(inp)
+
+        # böyle yapmana gerek yok
         i = 0
         for key in self.dumpFile:
             self.dumpFile[key] = inpList[i]
             i += 1
-        print(self.dumpFile)
-        telefonlar.append(self.dumpFile)
-        self.write_phones(telefonlar)
 
-    def write_phones(obj, path=gvars.jsonFilePath):
-        try:
-            with open(path, "w+") as file:
-                json.dump(obj, file)
-        except:
-            print("Kayıt Eklenemedi...")
-            return False
-        print("Kayıt Eklenmiştir!")
-        return True
+        # bu daha python
+        # for i, key in enumerate(self.dumpFile):
+        #     self.dumpFile[key] = inpList[i]
+
+        print(self.dumpFile)
+        gvars.telefonlar.append(self.dumpFile)
+        gvars.write_phones(gvars.telefonlar)
