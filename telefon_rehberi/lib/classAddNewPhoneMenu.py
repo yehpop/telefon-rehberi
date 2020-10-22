@@ -32,9 +32,6 @@ class AddNewPhoneMenu:
             "Email: ": email
         }
 
-    def addPhone(self, obj):
-        self.write_phones(obj)
-
     def print_menu(self):
         maxLenA = 0
         for menu in self.addPhoneMenuInputs:
@@ -51,8 +48,8 @@ class AddNewPhoneMenu:
                       "Yeni Telefon Kaydı Ekleme Menüsüne Hoşgeldiniz!" +
                       " " * offset))
 
-    def redirect_input(self, inp: int):
-        print(self.addPhoneMenuInputs[inp])
+    # def redirect_input(self, inp: int):
+    #   print(self.addPhoneMenuInputs[inp])
 
     def start(self):
         self.print_menu()
