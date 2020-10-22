@@ -1,23 +1,22 @@
-<<<<<<< HEAD
 # from telefon_rehberi.lib.classMainMenu import MainMenu
+
+# from telefon_rehberi.lib.classMainMenu import MainMenu, telefonlar
+import telefon_rehberi.res.global_variables as gvars
+isim, soyisim, telNo, evNo, email = "", "", 0, 0, ""
+
+# from json import dump
+# import json
 
 
 # class EditPhoneMenu(MainMenu):
 class EditPhoneMenu:
-    pass
-=======
-import json
-from json import dump
-import telefon_rehberi.res.global_variables as gvars
-from telefon_rehberi.lib.classMainMenu import MainMenu, telefonlar
-isim, soyisim, telNo, evNo, email = "", "", 0, 0, ""
-
-
-class EditPhoneMenu(MainMenu):
     def __init__(self):
         self.addPhoneMenuInputs = [
             "İsim: ", "Soyisim: ", "Tel No: ", "Ev No: ", "Email: "
         ]
+
+        # Bunları None yap
+        # ya da sadece keylerin tutulduğu arraya dönüştür
         self.dumpFile = {
             "İsim: ": isim,
             "Soyisim: ": soyisim,
@@ -42,13 +41,20 @@ class EditPhoneMenu(MainMenu):
 
     def start(self):
         self.print_menu()
+
+        # yapf: disable
+        check = input("Düzenlemek istediğiniz kaydın telefon numarasını giriniz: ")
+        # yapf: enable
+
+        # index kullanman gerekmiyor enumerate var
+        index = -1
         inpList = []
         falseCheck = 3
-        index = -1
-        check = input(
-            "Düzenlemek istediğiniz kaydın telefon numarasını giriniz: ")
         while not falseCheck == 0:
-            for i in telefonlar:
+            # index tutarken i yerine j dersen ya da daha uzun isim kullanırsan daha iyi olur
+
+            # for index, i in enumerate(gvars.telefonlar):
+            for i in gvars.telefonlar:
                 index += 1
                 if i['Tel No: '] == check:
                     for i in range(len(self.addPhoneMenuInputs)):
@@ -56,10 +62,17 @@ class EditPhoneMenu(MainMenu):
                             "Yapmak istediğiniz değişikliği girin, yoksa Enter'a basın",
                             self.addPhoneMenuInputs[i])
                         inpList.append(inp)
+
                     i = 0
+                    # aynı isimde değişken kullanmamaya çalış
                     for key in self.dumpFile:
                         self.dumpFile[key] = inpList[i]
                         i += 1
+
+                    # for index2, key in enumerate(self.dumpFile):
+                    #     self.dumpFile[key] = inpList[index2]
+
+                    # güzeell
                     self.dumpFile = {
                         "İsim: ":
                         i['İsim: '] if inpList[0].capitalize() == '' else
@@ -78,19 +91,10 @@ class EditPhoneMenu(MainMenu):
                         "Email: ":
                         i['Email: '] if inpList[4] == '' else inpList[4],
                     }
-                    telefonlar[index].update(self.dumpFile)
-                    self.write_phones(telefonlar)
+
+                    gvars.telefonlar[index].update(self.dumpFile)
+                    gvars.write_phones(gvars.telefonlar)
                     break
+
             check = input(
                 "Telefon numarasını yanlış girdiniz lütfen tekrar deneyin: ")
-
-    def write_phones(obj, path=gvars.jsonFilePath):
-        try:
-            with open(path, "w+") as file:
-                json.dump(obj, file)
-        except:
-            print("Kayıt Düzenleme Başarısız...")
-            return False
-        print("Kayıt Başarıyla Düzenlendi!")
-        return True
->>>>>>> 140e8c549802d59c4144c96a4f54724c5db2f8ea
