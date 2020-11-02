@@ -1,90 +1,30 @@
 [
     {
-        "ad": "Ahmet",
-        "soyad": "Yılmaz",
-        "ceptel": "5322515517",
-        "evtel": "2663224777",
-        "il": "Balıkesir",
-        "email": "ayilmaz@gmail.com"
+        "\u0130sim: ": "q",
+        "Soyisim: ": "w",
+        "Tel No: ": "e",
+        "Ev No: ": "r",
+        "Email: ": "t"
     },
     {
-        "ad": "Selim",
-        "soyad": "Demir",
-        "ceptel": "5472119164",
-        "evtel": "3221270811",
-        "il": "Adana",
-        "email": "sdemir@gmail.com"
+        "\u0130sim: ": "A",
+        "Soyisim: ": "S",
+        "Tel No: ": "d",
+        "Ev No: ": "f",
+        "Email: ": "g"
     },
     {
-        "ad": "Elif",
-        "soyad": "Yıldırım",
-        "ceptel": "5528449747",
-        "evtel": "3125945157",
-        "il": "Ankara",
-        "email": "eyildirim@gmail.com"
+        "\u0130sim: ": "Y\u00fc\u015fa",
+        "Soyisim: ": "Erenci",
+        "Tel No: ": "5537876666",
+        "Ev No: ": "2123332211",
+        "Email: ": "smsglxyn8@gmail.com"
     },
     {
-        "ad": "Kasım",
-        "soyad": "Aydın",
-        "ceptel": "5072611810",
-        "evtel": "2823596846",
-        "il": "Tekirdağ",
-        "email": "aaydin@gmail.com"
-    },
-    {
-        "ad": "Deniz",
-        "soyad": "Mavi",
-        "ceptel": "5359508543",
-        "evtel": "2164292000",
-        "il": "İstanbul",
-        "email": "dmavi@gmail.com"
-    },
-    {
-        "ad": "Sevinç",
-        "soyad": "Gök",
-        "ceptel": "5442036618",
-        "evtel": "2123611516",
-        "il": "İstanbul",
-        "email": "sgok@gmail.com"
-    },
-    {
-        "ad": "Salim",
-        "soyad": "Çakır",
-        "ceptel": "5431037496",
-        "evtel": "3185389328",
-        "il": "Kırıkkale",
-        "email": "scakir@gmail.com"
-    },
-    {
-        "ad": "Begüm",
-        "soyad": "Şimşek",
-        "ceptel": "5333520745",
-        "evtel": "2463655237",
-        "il": "Isparta",
-        "email": "bsimsek@gmail.com"
-    },
-    {
-        "ad": "Banu",
-        "soyad": "Sarı",
-        "ceptel": "5068912150",
-        "evtel": "3788322932",
-        "il": "Bartın",
-        "email": "bsari@gmail.com"
-    },
-    {
-        "ad": "Mehmet",
-        "soyad": "Yanal",
-        "ceptel": "5068912150",
-        "evtel": "4128322932",
-        "il": "Diyarbakır",
-        "email": "bsari@gmail.com"
-    },
-    {
-        "ad": "Pelin",
-        "soyad": "Atan",
-        "ceptel": "5397761444",
-        "evtel": "3243258549",
-        "il": "Mersin",
-        "email": "patan@gmail.com"
+        "\u0130sim: ": "Y\u00fc\u015fa Furkan",
+        "Soyisim: ": "Erenci",
+        "Tel No: ": "5537876636",
+        "Ev No: ": "2122122112",
+        "Email: ": "iamyusafurkan@gmail.com"
     }
 ]

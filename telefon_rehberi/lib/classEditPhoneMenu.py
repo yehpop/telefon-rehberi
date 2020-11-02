@@ -1,8 +1,6 @@
 # from telefon_rehberi.lib.classMainMenu import MainMenu
-
 # from telefon_rehberi.lib.classMainMenu import MainMenu, telefonlar
 import telefon_rehberi.res.global_variables as gvars
-isim, soyisim, telNo, evNo, email = "", "", 0, 0, ""
 
 # from json import dump
 # import json
@@ -14,16 +12,9 @@ class EditPhoneMenu:
         self.addPhoneMenuInputs = [
             "İsim: ", "Soyisim: ", "Tel No: ", "Ev No: ", "Email: "
         ]
-
         # Bunları None yap
         # ya da sadece keylerin tutulduğu arraya dönüştür
-        self.dumpFile = {
-            "İsim: ": isim,
-            "Soyisim: ": soyisim,
-            "Tel No: ": telNo,
-            "Ev No: ": evNo,
-            "Email: ": email
-        }
+        self.dumpFile = gvars.dumpFileG
 
     def print_menu(self):
         maxLenA = 0
@@ -43,24 +34,24 @@ class EditPhoneMenu:
         self.print_menu()
 
         # yapf: disable
-        check = input("Düzenlemek istediğiniz kaydın telefon numarasını giriniz: ")
+        check = str(input("Düzenlemek istediğiniz kaydın telefon numarasını giriniz: "))
         # yapf: enable
 
         # index kullanman gerekmiyor enumerate var
-        index = -1
         inpList = []
-        falseCheck = 3
+        falseCheck = 2
         while not falseCheck == 0:
+            index = -1
             # index tutarken i yerine j dersen ya da daha uzun isim kullanırsan daha iyi olur
 
             # for index, i in enumerate(gvars.telefonlar):
-            for i in gvars.telefonlar:
+            for j in gvars.telefonlar:
                 index += 1
-                if i['Tel No: '] == check:
+                if j['Tel No: '] == check:
                     for i in range(len(self.addPhoneMenuInputs)):
                         inp = input(
-                            "Yapmak istediğiniz değişikliği girin, yoksa Enter'a basın",
-                            self.addPhoneMenuInputs[i])
+                            "Yapmak istediğiniz değişikliği girin, yoksa Enter'a basın "
+                            + self.addPhoneMenuInputs[i])
                         inpList.append(inp)
 
                     i = 0
@@ -73,28 +64,31 @@ class EditPhoneMenu:
                     #     self.dumpFile[key] = inpList[index2]
 
                     # güzeell
+                    # yapf: disable
                     self.dumpFile = {
-                        "İsim: ":
-                        i['İsim: '] if inpList[0].capitalize() == '' else
-                        inpList[0].capitalize(),
-                        ###########################
-                        "Soyisim: ":
-                        i['Soyisim: '] if inpList[1].capitalize() == '' else
-                        inpList[1].capitalize(),
-                        ###########################
-                        "Tel No: ":
-                        i['Tel No: '] if inpList[2] == '' else inpList[2],
-                        ###########################
-                        "Ev No: ":
-                        i['Ev No: '] if inpList[3] == '' else inpList[3],
-                        ###########################
-                        "Email: ":
-                        i['Email: '] if inpList[4] == '' else inpList[4],
+                        "İsim: ": j['İsim: '] if inpList[0] == '' else inpList[0],
+                        "Soyisim: ": j['Soyisim: '] if inpList[1] == '' else inpList[1],
+                        "Tel No: ": j['Tel No: '] if inpList[2] == '' else inpList[2],
+                        "Ev No: ": j['Ev No: '] if inpList[3] == '' else inpList[3],
+                        "Email: ": j['Email: '] if inpList[4] == '' else inpList[4],
                     }
-
+                    # yapf: enable
                     gvars.telefonlar[index].update(self.dumpFile)
                     gvars.write_phones(gvars.telefonlar)
-                    break
+                    gvars.telefonlar = gvars.read_phones()
+                    print("Kayıttaki değişiklikler kaydedildi...")
+                    return 1
+            # yapf: disable
 
-            check = input(
-                "Telefon numarasını yanlış girdiniz lütfen tekrar deneyin: ")
+            # burası çalışabiliyorsa for döngüsünde bir şeyler yanlış gitmiştir
+            # ve bu da muhtemelen telefon numarasının yanlış girildiğini gösterir
+            # bunu kullanıcıya bildirip tel nosunun tekrar girilmesi istenir
+            # ve for loop'u yeniden çalışır
+
+            check = input("Telefon numarasını yanlış girdiniz lütfen tekrar deneyin: ")
+            falseCheck -= 1
+        # burası ise ancak while loop'unda bir sorun olduğunda veya loop durduğunda çalışacaktır
+        # loop'un durması 3 kez yanlış numara girildiğinde gerçekleşir
+        print("Telefon numarasını çok kez yanlış girdiğiniz için işlem iptal edilmiştir.")
+        return 1 # ana menüye dönmek için
+        # yapf: enable
