@@ -3,7 +3,7 @@ jsonFilePath = "telefon_rehberi/res/telefonlar.json"
 import json
 
 
-#   read_phones fonksiyonun burada durması iyi bir
+# read_phones fonksiyonun burada durması iyi bir
 # şey değil ama şimdilik sorun değil ileride taşırsın
 def read_phones(path=jsonFilePath):
     with open(path) as file:

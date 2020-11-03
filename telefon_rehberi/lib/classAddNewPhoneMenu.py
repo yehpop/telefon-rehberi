@@ -1,21 +1,6 @@
-import json
 import telefon_rehberi.res.global_variables as gvars
 
-# kardeşim ne yaptın
-# from telefon_rehberi.lib.classMainMenu import MainMenu, telefonlar
 
-# Olmadı bu
-# class AddNewPhoneMenu(MainMenu):
-# inheritance için main menuyu değil basemenu tarzında bir şey kullan eğer yapacaksan
-
-#   şimdi MainMenuden inheritlemeye çalıştığımızda hata
-# alıyoruz çünkü MainMenu'nün bu classlara erişebilmesi gerekiyor
-# __redirect filan hani
-
-# Ayrıca kodunu biraz daha açıklamaya çalış
-
-
-# eğer o işlere girersen interface ve metaclasslara da bak
 class AddNewPhoneMenu:
     def __init__(self):
         self.addPhoneMenuInputs = [
@@ -39,9 +24,6 @@ class AddNewPhoneMenu:
             "#" * len(" " * offset + "Yeni Telefon Kaydı Ekleme Menüsüne Hoşgeldiniz!" + " " * offset))
         # yapf: enable
 
-    # def redirect_input(self, inp: int):
-    #   print(self.addPhoneMenuInputs[inp])
-
     def start(self):
         self.print_menu()
 
@@ -49,17 +31,14 @@ class AddNewPhoneMenu:
         for i in range(len(self.addPhoneMenuInputs)):
             inp = input(self.addPhoneMenuInputs[i])
             inpList.append(inp)
-
-        # böyle yapmana gerek yok
-        # i = 0
-        # for key in self.dumpFile:
-        #     self.dumpFile[key] = inpList[i]
-        #     i += 1
-
         # bu daha python
         for i, key in enumerate(self.dumpFile):
             self.dumpFile[key] = inpList[i]
-
+        # eklenmek istenen kaydın bilgileri alınıp bi listeye konuluyor sonra bu listenin
+        # üyeleri tek tek dumpFile sözlüğüne ekleniyo ilk üye ilk anahtara ikinci üye ikinci üyeye
+        # şeklinde sonra sözlük telefonlar değişkenine atanıyor ve telefonlar telefonlar.json'a yazılıyo
+        # en sondaki gvars.telefonlar = gvars.read_phones() olmasaydı çıkış yapmadan birden çok kayıt
+        # ekleddiğinde tüm kayıtlara en son girdiğin bilgiler yazılıyor.
         print(self.dumpFile)
         gvars.telefonlar.append(self.dumpFile)
         gvars.write_phones(gvars.telefonlar)

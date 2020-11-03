@@ -9,7 +9,9 @@ class ErasePhoneMenu:
         self.dumpFile = gvars.dumpFileG
 
     def print_menu(self):
-        pass
+        # yapf: disable
+        print("\n############################################\nTelefon Kaydı Silme Menüsüne Hoşgeldiniz...\n############################################")
+        # yapf: enable
 
     def start(self):
         self.print_menu()

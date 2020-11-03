@@ -15,7 +15,6 @@ class MainMenu:
         self.erasePhoneMenu = None
 
     def __rename_menus(self):
-        # Burada değişen değişken farklı bir şey olsa iyi olur
         for index, menuName in enumerate(self.menuNames):
             self.menuNames[index] = f"{index+1}- {menuName}"
 
@@ -44,7 +43,7 @@ class MainMenu:
 
         inp = "a"
         while not (inp.isdigit() and 0 < int(inp) <= len(self.menuNames)):
-            inp = input("GIRMEK ISTEDIGIN MENUYU GIR LAN: ")
+            inp = input("Girmek İstediğiniz Menüyü Giriniz: ")
 
         return self.__redirect_input(int(inp) - 1)
 
@@ -124,3 +123,5 @@ class MainMenu:
             return False
         ########################################################
         ########################################################
+
+# 5. ve 6. menüyü __redirect içine kodlamam kötü mü oldu emin değilim ama yeni class kurmaya değmez gibi geldi

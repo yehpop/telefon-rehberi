@@ -1,19 +1,11 @@
-# from telefon_rehberi.lib.classMainMenu import MainMenu
-# from telefon_rehberi.lib.classMainMenu import MainMenu, telefonlar
 import telefon_rehberi.res.global_variables as gvars
 
-# from json import dump
-# import json
 
-
-# class EditPhoneMenu(MainMenu):
 class EditPhoneMenu:
     def __init__(self):
         self.addPhoneMenuInputs = [
             "İsim: ", "Soyisim: ", "Tel No: ", "Ev No: ", "Email: "
         ]
-        # Bunları None yap
-        # ya da sadece keylerin tutulduğu arraya dönüştür
         self.dumpFile = gvars.dumpFileG
 
     def print_menu(self):
@@ -37,13 +29,10 @@ class EditPhoneMenu:
         check = str(input("Düzenlemek istediğiniz kaydın telefon numarasını giriniz: "))
         # yapf: enable
 
-        # index kullanman gerekmiyor enumerate var
         inpList = []
         falseCheck = 2
         while not falseCheck == 0:
             index = -1
-            # index tutarken i yerine j dersen ya da daha uzun isim kullanırsan daha iyi olur
-
             # for index, i in enumerate(gvars.telefonlar):
             for j in gvars.telefonlar:
                 index += 1
@@ -55,7 +44,6 @@ class EditPhoneMenu:
                         inpList.append(inp)
 
                     i = 0
-                    # aynı isimde değişken kullanmamaya çalış
                     for key in self.dumpFile:
                         self.dumpFile[key] = inpList[i]
                         i += 1
